@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #009688, #00bcd4);
+        }
+        
+        form {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        form:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            color: #009688; /* Teal */
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2em;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #666666;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        ul {
+            color: #666666;
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            color: #333333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px; /* Adjust the font size */
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #009688; /* Teal */
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00796b; /* Darker Teal */
+        }
+    </style>
+</head>
+<body>
+    <form action="/submit" method="post">
+        <h1>Hire Me</h1>
+        <p>If you're interested in hiring me, please feel free to reach out!</p>
+        <p>You can contact me at:</p>
+        <ul>
+            <li>Email: example@example.com</li>
+            <li>Phone: +1234567890</li>
+        </ul>
+        <p>Or you can fill out the form below:</p>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Enter your message"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

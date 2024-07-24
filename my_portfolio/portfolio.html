@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+    /* Custom CSS styles */
+body {
+    background-color: #FFFFFF; /* White */
+    color: #333333; /* Dark Gray */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header Styles */
+header {
+    background-color: #FFFFFF; /* White */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #333333; /* Dark Gray */
+}
+
+.nav-links li a {
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.nav-links li a:hover {
+    background-color: #E0E0E0; /* Light Gray */
+    color: #333333; /* Dark Gray */
+}
+
+.nav-links .home-link,
+.auth-buttons a {
+    background-color: #009688; /* Teal */
+    color: #FFFFFF; /* White */
+}
+
+.nav-links .home-link:hover,
+.auth-buttons a:hover {
+    background-color: #00796B; /* Darker Teal */
+    color: #FFFFFF; /* White */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #666666; /* Medium Gray */
+    font-size: 16px;
+    position: relative;
+    display: inline-block;
+    padding: 10px 0;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #009688; /* Teal */
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.nav-links li:hover .dropdown {
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: #FFFFFF; /* White */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 1;
+    list-style: none;
+}
+
+.dropdown li {
+    width: 150px;
+}
+
+.dropdown li a {
+    color: #333333; /* Dark Gray */
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown li a:hover {
+    background-color: #E0E0E0; /* Light Gray */
+}
+
+.auth-buttons {
+    position: relative;
+}
+
+.auth-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: #FFFFFF; /* White */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.auth-dropdown li {
+    border-bottom: 1px solid #DDD; /* Light Gray */
+}
+
+.auth-dropdown li:last-child {
+    border-bottom: none;
+}
+
+.auth-dropdown a {
+    display: block;
+    padding: 10px 20px;
+    color: #333333; /* Dark Gray */
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.auth-dropdown a:hover {
+    background-color: #E0E0E0; /* Light Gray */
+}
+
+.auth-buttons a,
+.log-reg-btn {
+    background-color: #009688; /* Teal */
+    color: #FFFFFF; /* White */
+    border: 1px solid #009688;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.auth-buttons a:hover,
+.log-reg-btn:hover {
+    background-color: #00796B; /* Darker Teal */
+    color: #FFFFFF; /* White */
+}
+
+.auth-buttons a:active,
+.log-reg-btn:active {
+    background-color: #009688;
+    border-color: #009688;
+}
+
+/* Ensure images fill the container */
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+}
+
+/* Ensure the carousel slides automatically */
+.carousel {
+    overflow: hidden;
+}
+
+/* Hide the carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+    display: none;
+}
+
+/* Additional styles for carousel images */
+.carousel-item img {
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    transition: transform 0.3s ease-in-out; /* Add smooth transition effect */
+}
+
+.carousel-item img:hover {
+    transform: scale(1.05); /* Enlarge the image slightly on hover for an interactive effect */
+}
+
+.beautiful-text {
+    font-family: 'Georgia', serif;
+    color: #333333; /* Dark Gray */
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #FFFFFF; /* White */
+    border-radius: 10px;
+}
+
+.portfolio-frame {
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    background-color: #E0F7FA; /* Light Teal */
+    padding: 20px 0;
+    color: #333333; /* Dark Gray */
+    text-align: center;
+    margin-top: 50px; /* Adjust as needed */
+}
+
+.footer a {
+    color: #009688; /* Teal */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #00796B; /* Darker Teal */
+}
+
+.map-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    padding-bottom: 20px;
+    margin-top: 50px; /* Adjust as needed */
+}
+
+@media (max-width: 768px) {
+    .carousel-inner img {
+        height: 200px;
+    }
+    .map-container {
+        height: 200px;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width:  100%;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin: 4px 0;
+        transition: 0.4s;
+    }
+    .navbar.responsive .nav-links {
+        display: flex;
+    }
+    .navbar.responsive .menu-toggle .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .navbar.responsive .menu-toggle .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .navbar.responsive .menu-toggle .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+}
+
+/* Adjusted Log/Reg button */
+.auth-buttons a.log-reg-btn {
+    background-color: #009688; /* Teal */
+    color: #FFFFFF; /* White */
+    border: 1px solid #009688;
+    border-radius: 5px;
+    padding: 10px 20px; /* Adjusted padding */
+    font-size: 16px; /* Adjusted font size */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.auth-buttons a.log-reg-btn:hover {
+    background-color: #00796B; /* Darker Teal */
+    color: #FFFFFF; /* White */
+}
+
+.auth-buttons a.log-reg-btn:active {
+    background-color: #009688;
+    border-color: #009688;
+}
+
+/* Additional styles for text boxes */
+.text-box {
+    background-color: #FFFFFF; /* White */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.social-icons a {
+    color: #333333; /* Dark Gray */
+    margin-right: 30px; /* Adjust the margin as needed */
+    margin-top: 50px; /* Adjust as needed */
+    font-size: 24px; /* Increase the font size */
+}
+
+h1 {
+    font-family: 'Lucida Console'; /* Change the font family */
+    color: #000000; /* Black */
+}
+
+.wave {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    bottom: -1px;
+    left: -50%;
+    background-repeat: repeat no-repeat;
+    background-size: 50% auto;
+    animation: wave-animation 5s infinite linear;
+}
+
+@keyframes wave-animation {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+/* styles.css */
+
+/* General styles */
+body {
+    transition: background-color 0.5s, color 0.5s;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+header.dark-mode {
+    background-color: #444444;
+    color: #FFFFFF;
+}
+
+/* Nav links and auth buttons for dark mode */
+.nav-links.dark-mode a,
+.auth-buttons.dark-mode a {
+    color: #FFFFFF;
+}
+
+#dark-mode-toggle {
+    cursor: pointer;
+}
+
+#dark-mode-toggle img {
+    width: 30px;
+    height: 30px;
+}
+
+   /* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 400px;
+  }
+  
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Style for Login/Signup buttons */
+  #loginBtn,
+  #signupBtn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  #loginBtn:hover,
+  #signupBtn:hover {
+    background-color: #0056b3;
+  }
+   
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo">
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="#home" class="home-link">Home</a>
+                    <ul class="dropdown">
+                        <li><a href="#section1">Section 1</a></li>
+                        <li><a href="#section2">Section 2</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#about">About</a>
+                    <ul class="dropdown">
+                        <li><a href="#mission">Our Mission</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#academic">Academic</a>
+                    <ul class="dropdown">
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#publications">Publications</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#creator">Creator</a>
+                    <ul class="dropdown">
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="auth-buttons" style="position: absolute; right: 20px;">
+                <a href="registration.html" class="log-reg-btn" style="background-color: #009688; color: #ffffff; padding: 10px 20px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s, color 0.3s;">
+                    Log/Reg
+                </a>
+            </div>
+         
+
+             <!-- Other header content -->
+        <div id="dark-mode-toggle">
+            <img src="dark.png" alt="Sun Icon" id="sun-icon">
+            <img src="light.png" alt="Moon Icon" id="moon-icon" style="display: none;">
+        </div>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+       
+        </nav>
+    </header>
+    <div id="sectionCarousel" class="carousel slide mt-5" data-ride="carousel" data-interval="3000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <section>
+                    <div class="container mt-5">
+                        <div class="row">
+                            <div class="col-md-6 order-md-1"> <!-- Image in left -->
+                                <div class="portfolio-frame-circle">
+                                    <img src="wmy2.jpg" alt="Beautiful Landscape" class="rounded-circles" style="max-width: 350px;">
+                                </div>
+                            </div>
+                            <div class="col-md-6 order-md-2"> <!-- Text in right -->
+                                <div class="text-box">
+                                   <h1>Hey,im Heema pradhan</h1>
+                                    <div class="hire-me-button text-left mt-4">
+                                        <a href="hire.html" class="btn btn-primary btn-lg" style="background-color: #ff6347; border-color: #ff6347; color: #ffffff;">Hire Me</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="carousel-item">
+                <section>
+                    <div class="container mt-5">
+                        <div class="row">
+                            <div class="col-md-6 order-md-1"> <!-- Image in left -->
+                                <div class="portfolio-frame-circle">
+                                    <img src="my1.jpg" alt="Adventure" class="rounded-circles" style="max-width: 350px;">
+                                </div>
+                            </div>
+                            <div class="col-md-6 order-md-2"> <!-- Text in right -->
+                                <div class="text-box">
+                                    <p>Describes your interest in dancing, explaining how it helps you express yourself and stay fit. Dancing is not just a hobby for you but a passion that keeps you energized and creative.</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="carousel-item">
+                        <section>
+                            <div class="container mt-5">
+                                <div class="row">
+                                    <div class="col-md-6 order-md-1"> <!-- Image in left -->
+                                        <div class="portfolio-frame-circle">
+                                            <img src="my3.jpg" alt="Relaxation" class="rounded-circles" style="max-width: 350px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 order-md-2"> <!-- Text in right -->
+                                        <div class="text-box">
+                                            <p>Discusses your passion for gardening, emphasizing the joy and fulfillment you get from nurturing plants. Gardening allows you to connect with nature and provides a peaceful escape from the busy world of software development.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#sectionCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#sectionCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+           
+            
+          
+          
+          
+            <div style="margin-top: 100px;"></div>
+            <div class="map-container" style="margin-top: 50px;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2284.951856660495!2d88.4645!3d27.2645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a0581a1c7f05%3A0x68e4d40b17e60f5c!2sSingtam%2C%20Sikkim%20737134!5e0!3m2!1sen!2sin!4v1589526800721!5m2!1sen!2sin" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+           
+            <section id="contact" style="background-color: #f9f9f9; padding: 50px 0;">
+                <div class="container" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                    <h2 style="margin-bottom: 20px; color: #333;">Contact Me</h2>
+                    <form action="#" method="post" style="text-align: left;">
+                        <label for="name" style="display: block; margin-bottom: 10px;">Your Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;">
+                        <label for="email" style="display: block; margin-bottom: 10px;">Your Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;">
+                        <label for="message" style="display: block; margin-bottom: 10px;">Your Message:</label>
+                        <textarea id="message" name="message" placeholder="Enter your message" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px; height: 150px;"></textarea>
+                        <button type="submit" style="background-color: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
+                    </form>
+                </div>
+            </section>
+           
+           
+           
+           
+           
+          <footer class="footer" style="position: relative; overflow: hidden;">
+    <div class="wave" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, #87CEEB 0%, #FFFFFF 100%); z-index: -1;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-left" style="color: #333;">&copy; 2024 Your Company. All rights reserved. | <a href="#" class="text-dark">Privacy Policy</a> | <a href="#" class="text-dark">Terms of Service</a></p>
+            </div>
+            <div class="col-md-6">
+                <div class="text-right">
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram" style="color: #e4405f;"></i></a>
+                        <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter" style="color: #00acee;"></i></a>
+                        <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin" style="color: #0077b5;"></i></a>
+                        <a href="https://www.twitch.tv/" target="_blank"><i class="fab fa-twitch" style="color: #6441a5;"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+   <!-- Login/Signup Modal -->
+<div id="loginSignupModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Login or Sign Up</h2>
+      <button id="loginBtn">Login</button>
+      <button id="signupBtn">Sign Up</button>
+    </div>
+  </div>
+           
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <script>
+                // Menu toggle script for mobile view
+                document.querySelector('.menu-toggle').addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    document.querySelector('.navbar').classList.toggle('responsive');
+                });
+                // Ensure carousel restarts from the first slide after it reaches the last one
+                $('#sectionCarousel').on('slid.bs.carousel', function () {
+                    if($('.carousel-inner .carousel-item:last').hasClass('active')) {
+                        $('#sectionCarousel').carousel('pause');
+                        $('#sectionCarousel').carousel(0);
+                        $('#sectionCarousel').carousel('cycle');
+                    }
+                });
+            
+        
+            // script.js
+
+// Get references to the toggle icons
+const sunIcon = document.getElementById('sun-icon');
+const moonIcon = document.getElementById('moon-icon');
+
+// Function to toggle dark mode
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    document.querySelector('header').classList.toggle('dark-mode');
+    document.querySelector('.nav-links').classList.toggle('dark-mode');
+    document.querySelector('.auth-buttons').classList.toggle('dark-mode');
+
+    // Toggle icon visibility
+    sunIcon.style.display = sunIcon.style.display === 'none' ? 'block' : 'none';
+    moonIcon.style.display = moonIcon.style.display === 'none' ? 'block' : 'none';
+
+    // Save the current mode to localStorage
+    const currentMode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('mode', currentMode);
+}
+
+// Event listeners for the icons
+sunIcon.addEventListener('click', toggleDarkMode);
+moonIcon.addEventListener('click', toggleDarkMode);
+
+// Retain dark mode setting on page reload
+document.addEventListener('DOMContentLoaded', () => {
+    const savedMode = localStorage.getItem('mode');
+    if (savedMode === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('header').classList.add('dark-mode');
+        document.querySelector('.nav-links').classList.add('dark-mode');
+        document.querySelector('.auth-buttons').classList.add('dark-mode');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+    }
+});
+
+// Get the modal
+const modal = document.getElementById('loginSignupModal');
+
+// Get the <span> element that closes the modal
+const closeBtn = document.querySelector('.close');
+
+// Function to display the modal
+function displayModal() {
+  modal.style.display = 'block';
+}
+
+// Function to close the modal when clicking on the close button
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Display the modal when the page is loaded
+window.addEventListener('load', displayModal);
+
+     
+            </script>
+        </body>
+        </html>
+        
