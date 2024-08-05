@@ -1,0 +1,110 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        .nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        .card p {
+            line-height: 1.6;
+        }
+        .footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        @media (max-width: 600px) {
+            .nav a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>User Dashboard</h1>
+</div>
+
+<div class="nav">
+    <a href="#">Home</a>
+    <a href="#">Profile</a>
+    <a href="#">Settings</a>
+    <a href="logout.php">Logout</a>
+</div>
+
+
+
+    <div class="card">
+        <h3>Upload Photo</h3>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            <label for="file">Choose file to upload:</label>
+            <input type="file" name="file" id="file" style="width: 100%; padding: 10px; margin-top: 10px;"><br><br>
+            <input type="submit" value="Upload File" name="submit" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+        </form>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 MyPortfolio. All rights reserved.</p>
+</div>
+
+</body>
+</html>
